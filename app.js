@@ -46,7 +46,6 @@ function checkToken(req, res, next){
     try{
         const secret = process.env.SECRET
         jwt.verify(token, secret)
-        
         next()
 
     }catch(error){
@@ -55,8 +54,9 @@ function checkToken(req, res, next){
 }
 // Register User
 app.post('/auth/register', async(req, res) => {
-    const {name, email, password, confirmPassword} = req.body
     
+    const {name, email, password, confirmPassword} = req.body
+
     // Validacoes
     if(!name){
         return res.status(422).json({msg: "O nome é obrigatório!" })
