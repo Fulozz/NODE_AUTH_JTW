@@ -1,9 +1,12 @@
 // Imporrts
 require('dotenv').config()
 const express = require('express')
+
 const mongoose = require('mongoose')
 const bcrypt = require('bcrypt')
 const jwt = require('jsonwebtoken')
+
+const port = 3000;
 
 const app = express()
 
@@ -12,7 +15,6 @@ app.use(express.json());
 
 // Models
 const User = require('./models/User')
-
 
 // Public Route
 app.get('/', (req, res) => {
@@ -148,7 +150,7 @@ const dbPassword = process.env.DB_PASS
 
  mongoose
  .connect(`mongodb+srv://${dbUser}:${dbPassword}@cluster0.o5plwso.mongodb.net/?retryWrites=true&w=majority`,)
- .then(() => {app.listen(3000); console.log("Conectou ao banco!")})
+ .then(() => {app.listen(port); console.log("Conectou ao banco!")})
  .catch((err)=> console.log(err));
 
 
